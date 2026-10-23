@@ -1,92 +1,265 @@
-import React from "react";
-import { motion } from "framer-motion";
-import { Globe, Smartphone, Share2, Layers, PenTool, BarChart2, Target, Search, Mail, Film, Monitor, MapPin, Sparkles, ArrowRight } from "lucide-react";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  Share2,
+  TrendingUp,
+  Target,
+  Search,
+  Mail,
+  Palette,
+  PenTool,
+  MapPin,
+  Film,
+  Tv,
+  Sparkles,
+  Globe,
+  Smartphone,
+  ArrowRight,
+  Layers,
+} from "lucide-react";
 
-const services = [
-  { id: 1, icon: Globe, title: "Website Design & Development", desc: "Fast, mobile-friendly business websites, landing pages and e-commerce stores built to turn visitors into enquiries." },
-  { id: 2, icon: Smartphone, title: "Mobile App Development", desc: "Android and iOS apps for booking, ordering, loyalty and customer engagement." },
-  { id: 3, icon: Share2, title: "Social Media Marketing", desc: "Content planning, reels, posts, page handling and community management across Instagram, Facebook, YouTube and LinkedIn." },
-  { id: 4, icon: Layers, title: "Branding & Identity", desc: "Brand strategy, tone, colours, taglines and complete brand guidelines that make you unforgettable." },
-  { id: 5, icon: PenTool, title: "Logo Design", desc: "Distinctive, meaningful logos with full usage variations for print and digital." },
-  { id: 6, icon: BarChart2, title: "Performance Marketing", desc: "Data-driven campaigns focused on measurable results: leads, calls, sales." },
-  { id: 7, icon: Target, title: "Meta Ads", desc: "Facebook and Instagram ad campaigns with sharp targeting, creatives and ongoing optimisation." },
-  { id: 8, icon: Search, title: "Google Ads", desc: "Search, display and YouTube ads that put you in front of customers who are actively looking for you." },
-  { id: 9, icon: Mail, title: "Email Marketing", desc: "Newsletters, automations and follow-up flows that bring past customers back." },
-  { id: 10, icon: Film, title: "Media Production", desc: "Ad films, corporate videos, product shoots, reels and photography, from concept to final edit." },
-  { id: 11, icon: Monitor, title: "Theatre Advertisement", desc: "On-screen cinema ads that reach a captive, engaged local audience." },
-  { id: 12, icon: MapPin, title: "Offline Branding", desc: "Hoardings, flex and signage, vehicle branding, brochures, standees and on-ground activations." },
-  { id: 13, icon: Sparkles, title: "Immersive Advertisements", desc: "Experiential, AR and interactive campaigns that people remember and share." },
+const serviceCategories = [
+  {
+    id: "digital-marketing",
+    name: "Digital Marketing",
+    count: 5,
+    tagline: "Audience targeting, multi-platform ads & retention",
+    services: [
+      {
+        name: "Social Media Marketing",
+        icon: Share2,
+        desc: "Content planning, Reels, posts, and community engagement built around what your audience actually cares about.",
+      },
+      {
+        name: "Performance Marketing",
+        icon: TrendingUp,
+        desc: "Data-led advertising campaigns structured around customer intent and measurable business actions.",
+      },
+      {
+        name: "Meta Ads",
+        icon: Target,
+        desc: "High-impact Instagram & Facebook ad campaigns with refined audience targeting and creative testing.",
+      },
+      {
+        name: "Google Ads",
+        icon: Search,
+        desc: "Search, display, and intent-driven campaigns that capture buyers actively seeking your solution.",
+      },
+      {
+        name: "Email Marketing",
+        icon: Mail,
+        desc: "Direct communication workflows, newsletters, and automated sequences that nurture relationships and retention.",
+      },
+    ],
+  },
+  {
+    id: "design-branding",
+    name: "Design & Branding",
+    count: 3,
+    tagline: "Distinctive identity & cohesive physical touchpoints",
+    services: [
+      {
+        name: "Brand & Branding & Identity",
+        icon: Layers,
+        desc: "Comprehensive brand positioning, visual language, typography, and tone that establish long-term recognition.",
+      },
+      {
+        name: "Logo Design",
+        icon: PenTool,
+        desc: "Distinctive, memorable logo marks engineered for versatility across digital interfaces and physical print.",
+      },
+      {
+        name: "Offline Branding",
+        icon: MapPin,
+        desc: "Hoardings, flex signage, environmental graphics, and on-ground brand collateral that capture local physical attention.",
+      },
+    ],
+  },
+  {
+    id: "production-advertising",
+    name: "Production & Advertising",
+    count: 3,
+    tagline: "Storytelling, cinema reach & experiential formats",
+    services: [
+      {
+        name: "Media Production",
+        icon: Film,
+        desc: "Commercial ad films, product cinematography, studio photography, and high-quality brand video production.",
+      },
+      {
+        name: "Theatre Advertising",
+        icon: Tv,
+        desc: "Captive on-screen cinema advertising that delivers undivided attention across prime theater networks.",
+      },
+      {
+        name: "Immersive Advertising",
+        icon: Sparkles,
+        desc: "Interactive visual experiences, AR activations, and unconventional experiential formats that make a lasting impression.",
+      },
+    ],
+  },
+  {
+    id: "technology-development",
+    name: "Technology & Development",
+    count: 2,
+    tagline: "High-performance web architecture & mobile apps",
+    services: [
+      {
+        name: "Website Design & Development",
+        icon: Globe,
+        desc: "Fast, responsive web applications and landing pages engineered to convert visitor curiosity into real inquiries.",
+      },
+      {
+        name: "Mobile App Development",
+        icon: Smartphone,
+        desc: "Custom iOS and Android applications providing intuitive user journeys, customer loyalty, and functional utility.",
+      },
+    ],
+  },
 ];
 
 const Services = () => {
+  const [activeTab, setActiveTab] = useState(0);
+
   return (
-    <section id="services" className="py-28 bg-[#060606] relative">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+    <section id="services" className="py-24 md:py-32 bg-[#060606] relative overflow-hidden border-t border-white/5">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        {/* Section Header */}
+        <div className="max-w-3xl mx-auto text-center mb-16">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center space-x-2 bg-[#060606]/5 border border-white/10 rounded-full px-4 py-1.5 mb-6"
+            className="inline-flex items-center space-x-2 bg-secondary/10 border border-secondary/25 rounded-full px-4 py-1.5 mb-6"
           >
-            <Sparkles size={14} className="text-secondary" />
-            <span className="text-xs font-semibold tracking-widest text-gray-300 uppercase">13 Services. One Team.</span>
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary" style={{ fontFamily: "Outfit, sans-serif" }}>
+              03. SERVICES — FOUR CATEGORIES
+            </span>
           </motion.div>
+
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-extrabold mb-5"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white mb-5"
             style={{ fontFamily: "Outfit, sans-serif" }}
           >
-            Everything Under{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-orange-400">One Roof</span>
+            13 Specialized Services.{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-secondary to-orange-400">
+              Four Core Pillars.
+            </span>
           </motion.h2>
+
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-gray-400 text-lg"
+            transition={{ delay: 0.15 }}
+            className="text-gray-400 text-base sm:text-lg leading-relaxed"
           >
-            From your first logo to your last hoarding, we handle it all.
+            We don't recommend every service to every client. We select only the appropriate tools from our capabilities that fit your exact business goals.
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {services.map((s, i) => (
-            <motion.div
-              key={s.id}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: (i % 3) * 0.08, duration: 0.5 }}
-              className="group relative bg-[#060606]/[0.03] border border-white/10 p-8 rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_16px_50px_rgba(255,90,0,0.1)] hover:border-secondary/30 cursor-pointer"
+        {/* Category Tabs */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12 max-w-4xl mx-auto">
+          {serviceCategories.map((cat, idx) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveTab(idx)}
+              className={`px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition-all duration-300 flex items-center space-x-2 border cursor-pointer ${
+                activeTab === idx
+                  ? "bg-secondary text-white border-secondary shadow-[0_0_20px_rgba(255,90,0,0.3)] scale-[1.02]"
+                  : "bg-white/[0.03] text-gray-400 border-white/10 hover:border-white/20 hover:text-white"
+              }`}
+              style={{ fontFamily: "Outfit, sans-serif" }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-secondary/8 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-[#060606]/5 border border-white/10 flex items-center justify-center text-gray-400 group-hover:text-secondary group-hover:border-secondary/40 group-hover:bg-secondary/10 transition-all duration-300">
-                    <s.icon size={22} />
-                  </div>
-                  <span className="text-secondary/50 font-bold text-sm group-hover:text-secondary transition-colors">
-                    {String(s.id).padStart(2, "0")}
-                  </span>
-                </div>
-
-                <h3 className="text-lg font-bold mb-3 text-white" style={{ fontFamily: "Outfit, sans-serif" }}>{s.title}</h3>
-                <p className="text-gray-500 text-sm mb-6 leading-relaxed group-hover:text-gray-400 transition-colors">{s.desc}</p>
-
-                <div className="inline-flex items-center text-sm font-semibold text-gray-500 group-hover:text-secondary transition-colors">
-                  Learn More
-                  <ArrowRight size={14} className="ml-1 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            </motion.div>
+              <span>{cat.name}</span>
+              <span
+                className={`text-[11px] px-2 py-0.5 rounded-full ${
+                  activeTab === idx ? "bg-white/20 text-white" : "bg-white/10 text-gray-400"
+                }`}
+              >
+                {cat.count}
+              </span>
+            </button>
           ))}
+        </div>
+
+        {/* Tab Content Header */}
+        <div className="text-center mb-10">
+          <p className="text-secondary text-xs uppercase tracking-widest font-bold">
+            Category {String(activeTab + 1).padStart(2, "0")} of 04
+          </p>
+          <p className="text-gray-300 text-sm mt-1">
+            {serviceCategories[activeTab].tagline}
+          </p>
+        </div>
+
+        {/* Service Cards Grid */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
+          >
+            {serviceCategories[activeTab].services.map((service, i) => {
+              const Icon = service.icon;
+              return (
+                <div
+                  key={service.name}
+                  className="group p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-secondary/40 hover:bg-white/[0.04] transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
+                >
+                  <div className="absolute top-0 right-0 w-28 h-28 bg-secondary/5 rounded-bl-full pointer-events-none group-hover:bg-secondary/15 transition-colors" />
+
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-12 h-12 rounded-xl bg-white/[0.05] border border-white/10 flex items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white group-hover:border-secondary transition-all duration-300 shadow-sm">
+                        <Icon size={22} />
+                      </div>
+                      <span className="text-xs font-mono font-bold text-gray-500 group-hover:text-secondary transition-colors">
+                        0{i + 1}
+                      </span>
+                    </div>
+
+                    <h3
+                      className="text-xl font-bold text-white mb-3 group-hover:text-white transition-colors"
+                      style={{ fontFamily: "Outfit, sans-serif" }}
+                    >
+                      {service.name}
+                    </h3>
+
+                    <p className="text-gray-400 text-sm leading-relaxed mb-6">
+                      {service.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-4 border-t border-white/5 flex items-center justify-between text-xs text-gray-500">
+                    <span className="uppercase tracking-wider font-semibold">
+                      {serviceCategories[activeTab].name}
+                    </span>
+                    <span className="text-secondary opacity-0 group-hover:opacity-100 transition-opacity font-bold">
+                      Integrated &rarr;
+                    </span>
+                  </div>
+                </div>
+              );
+            })}
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Bottom Context Callout */}
+        <div className="mt-16 text-center max-w-2xl mx-auto p-6 rounded-2xl border border-white/10 bg-white/[0.02]">
+          <p className="text-xs text-secondary font-bold uppercase tracking-widest mb-1">
+            Fit Over Fluff
+          </p>
+          <p className="text-sm text-gray-300">
+            "We don't do everything just because everything is available. We choose what fits your business and focus on making it work."
+          </p>
         </div>
       </div>
     </section>

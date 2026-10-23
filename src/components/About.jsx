@@ -51,8 +51,13 @@ const About = () => {
             <div className="mt-10 p-6 rounded-2xl border border-secondary/30 bg-secondary/5">
               <p className="text-xs font-bold uppercase tracking-widest text-secondary mb-2">Our Promise</p>
               <p className="text-xl font-bold text-white italic" style={{ fontFamily: "Outfit, sans-serif" }}>
-                Ninety Days. Your Brand Rebuilt. Growth You Can Bet On.
+                Ninety Days. Your Brand Rebuilt. Growth You Can Measure.
               </p>
+            </div>
+            
+            {/* Team Placeholder */}
+            <div className="mt-6 p-6 rounded-2xl border border-white/10 bg-[#060606]/10 text-center">
+              <p className="text-gray-400 text-sm">Team information & founder photo coming soon.</p>
             </div>
           </motion.div>
 

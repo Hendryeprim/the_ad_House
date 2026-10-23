@@ -19,7 +19,7 @@ const CTA = () => (
         transition={{ duration: 0.8 }}
       >
         <p className="text-white/70 text-sm font-bold uppercase tracking-widest mb-6">
-          The 90-Day Challenge
+          The 90-Day Growth Plan
         </p>
         <h2
           className="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight"
@@ -35,7 +35,7 @@ const CTA = () => (
           href="#contact"
           className="group inline-flex items-center px-10 py-5 bg-[#060606] text-secondary font-extrabold text-lg rounded-full hover:bg-[#060606]/[0.03] transition-all duration-300 shadow-[0_0_40px_rgba(0,0,0,0.3)] hover:shadow-[0_0_60px_rgba(0,0,0,0.4)] hover:-translate-y-1 transform"
         >
-          Contact Us Today
+          Get a Free Consultation
           <ArrowRight size={20} className="ml-2 group-hover:translate-x-1 transition-transform" />
         </a>
       </motion.div>

@@ -1,135 +1,202 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, TrendingUp, Users } from "lucide-react";
+import { ArrowRight, Clock, Compass, Sparkles } from "lucide-react";
 
 const stagger = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.1 } },
+  show: { transition: { staggerChildren: 0.12 } },
 };
+
 const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 24 },
   show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
 };
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen pt-32 pb-20 overflow-hidden flex flex-col justify-center">
-      {/* Static glow — no animation, GPU-friendly */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[radial-gradient(circle_at_center,_rgba(255,90,0,0.15)_0%,_transparent_70%)] -z-10 pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[radial-gradient(circle_at_center,_rgba(88,28,135,0.1)_0%,_transparent_70%)] -z-10 pointer-events-none" />
+    <section id="hero" className="relative min-h-screen pt-32 pb-20 overflow-hidden flex flex-col justify-center">
+      {/* Ambient background glow */}
+      <div className="absolute top-12 left-1/4 w-[520px] h-[520px] bg-[radial-gradient(circle_at_center,_rgba(255,90,0,0.14)_0%,_transparent_70%)] -z-10 pointer-events-none" />
+      <div className="absolute bottom-10 right-1/4 w-[420px] h-[420px] bg-[radial-gradient(circle_at_center,_rgba(255,140,0,0.08)_0%,_transparent_70%)] -z-10 pointer-events-none" />
 
-      <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-        <motion.div variants={stagger} initial="hidden" animate="show" className="max-w-2xl">
-          <motion.div variants={fadeUp} className="inline-flex items-center space-x-2 bg-secondary/10 border border-secondary/25 rounded-full px-4 py-1.5 mb-8">
+      <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        {/* Left Column: Core Messaging */}
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate="show"
+          className="lg:col-span-7 max-w-2xl"
+        >
+          {/* Eyebrow badge */}
+          <motion.div variants={fadeUp} className="inline-flex items-center space-x-2.5 bg-secondary/10 border border-secondary/30 rounded-full px-4 py-1.5 mb-8">
             <span className="w-2 h-2 rounded-full bg-secondary animate-pulse" />
-            <span className="text-xs font-semibold tracking-widest text-secondary uppercase">One-Roof Advertising Agency</span>
+            <span className="text-xs font-bold tracking-widest text-secondary uppercase" style={{ fontFamily: "Outfit, sans-serif" }}>
+              30 TO 90 — SEE WHAT'S NEXT
+            </span>
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-extrabold leading-[1.05] mb-4 text-white tracking-tight" style={{ fontFamily: "Outfit, sans-serif" }}>
-            Ninety Days.{" "}
-            <span className="block">Your Brand Rebuilt.</span>
+          {/* Main Title */}
+          <motion.h1
+            variants={fadeUp}
+            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.08] mb-6 text-white tracking-tight"
+            style={{ fontFamily: "Outfit, sans-serif" }}
+          >
+            30 Minutes to Know Who You Are.{" "}
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-secondary via-orange-400 to-amber-300">
+              90 Days to Define Where You Go.
+            </span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="text-2xl md:text-3xl font-bold text-secondary mb-6" style={{ fontFamily: "Outfit, sans-serif" }}>
-            Growth You Can Bet On.
+          {/* Direct client copy */}
+          <motion.p
+            variants={fadeUp}
+            className="text-base sm:text-lg md:text-xl text-gray-300 mb-10 leading-relaxed font-normal"
+          >
+            We spend the first 30 minutes understanding your business, your audience, your current digital presence and what is actually holding you back. Then we use that understanding to define what the next 90 days should look like.
           </motion.p>
 
-          <motion.p variants={fadeUp} className="text-base md:text-lg text-gray-400 mb-10 leading-relaxed max-w-xl">
-            The Ad House is not just a digital marketing company. Websites, mobile apps, social media, branding, ads, media production and offline advertising — everything your brand needs is under one roof.
-          </motion.p>
-
-          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4">
+          {/* Action CTAs */}
+          <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center">
             <a
               href="#contact"
-              className="group px-8 py-4 bg-secondary text-white font-semibold rounded-full hover:bg-orange-500 transition-colors duration-200 shadow-[0_0_20px_rgba(255,90,0,0.3)] hover:shadow-[0_0_35px_rgba(255,90,0,0.5)] flex items-center justify-center"
+              className="group px-8 py-4 bg-secondary text-white font-bold rounded-full hover:bg-orange-500 transition-all duration-300 shadow-[0_0_25px_rgba(255,90,0,0.35)] hover:shadow-[0_0_40px_rgba(255,90,0,0.55)] flex items-center justify-center text-sm md:text-base hover:-translate-y-0.5"
             >
-              Get a Free Consultation
+              BOOK A 30-MINUTE CONVERSATION
               <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
-              href="#services"
-              className="px-8 py-4 bg-[#060606]/5 border border-white/15 text-white font-semibold rounded-full hover:bg-[#060606]/10 transition-colors duration-200 text-center"
+              href="#core-idea"
+              className="px-8 py-4 bg-white/5 border border-white/15 text-white font-semibold rounded-full hover:bg-white/10 hover:border-white/30 transition-all duration-300 text-center text-sm md:text-base"
             >
-              Our Services
+              See How It Works
             </a>
           </motion.div>
         </motion.div>
 
-        {/* Right Visual — 2 floating cards only */}
+        {/* Right Column: Visual 30-to-90 Concept Card */}
         <motion.div
-          initial={{ opacity: 0, x: 30 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-          className="relative h-[480px] lg:h-[560px] w-full hidden md:block"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.25, ease: "easeOut" }}
+          className="lg:col-span-5 relative"
         >
-          <div className="absolute inset-0 rounded-3xl overflow-hidden border border-white/10 bg-gradient-to-br from-gray-900 to-black">
-            <img
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=60&w=1200&auto=format&fit=crop"
-              alt="The Ad House — Advertising Strategy"
-              className="object-cover w-full h-full opacity-35 mix-blend-luminosity"
-              loading="lazy"
-              decoding="async"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+          <div className="relative rounded-3xl p-6 sm:p-8 border border-white/10 bg-gradient-to-b from-[#141414] to-[#0a0a0a] shadow-2xl">
+            {/* Background accent lines */}
+            <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/10 rounded-full blur-2xl pointer-events-none" />
+
+            <div className="flex items-center justify-between pb-6 border-b border-white/10">
+              <div className="flex items-center space-x-2">
+                <div className="w-3 h-3 rounded-full bg-secondary" />
+                <span className="text-xs font-bold tracking-wider text-gray-300 uppercase">Strategic Trajectory</span>
+              </div>
+              <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-secondary/15 text-secondary border border-secondary/20">
+                The AD House
+              </span>
+            </div>
+
+            {/* 30 Minutes Card */}
+            <div className="mt-6 p-5 rounded-2xl bg-white/[0.03] border border-white/10 hover:border-secondary/40 transition-colors">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-xl bg-secondary/15 border border-secondary/30 flex items-center justify-center text-secondary shrink-0">
+                  <Clock size={22} />
+                </div>
+                <div>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xl font-bold text-white" style={{ fontFamily: "Outfit, sans-serif" }}>
+                      The 30 Minutes
+                    </span>
+                    <span className="text-xs font-bold text-secondary uppercase">Diagnosis</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-gray-400 mt-1.5 leading-relaxed">
+                    Understand your business, your audience, current presence & what is holding you back. No pitch. Pure understanding.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Connector */}
+            <div className="my-3 flex items-center justify-center">
+              <div className="flex flex-col items-center">
+                <div className="w-[2px] h-4 bg-gradient-to-b from-secondary to-orange-400" />
+                <span className="text-[11px] font-semibold text-secondary px-3 py-0.5 rounded-full bg-secondary/10 border border-secondary/25 my-1 uppercase tracking-wider">
+                  Leads To
+                </span>
+                <div className="w-[2px] h-4 bg-gradient-to-b from-orange-400 to-amber-300" />
+              </div>
+            </div>
+
+            {/* 90 Days Card */}
+            <div className="p-5 rounded-2xl bg-gradient-to-br from-secondary/10 via-white/[0.02] to-transparent border border-secondary/30">
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 rounded-xl bg-secondary border border-secondary flex items-center justify-center text-white shrink-0 shadow-[0_0_15px_rgba(255,90,0,0.5)]">
+                  <Compass size={22} />
+                </div>
+                <div>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-xl font-bold text-white" style={{ fontFamily: "Outfit, sans-serif" }}>
+                      The 90 Days
+                    </span>
+                    <span className="text-xs font-bold text-orange-300 uppercase">Focused Action</span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-gray-300 mt-1.5 leading-relaxed">
+                    Turn clear diagnosis into disciplined action. Identify what matters, choose what fits, and execute with focus.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Punchline */}
+            <div className="mt-6 pt-5 border-t border-white/10 flex items-center justify-between text-xs text-gray-400">
+              <span>Direction first. Execution second.</span>
+              <span className="text-secondary font-semibold">Real Business Movement</span>
+            </div>
           </div>
-
-          <motion.div
-            animate={{ y: [0, -12, 0] }}
-            transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-            style={{ willChange: "transform" }}
-            className="absolute top-10 -left-8 glass-card p-4 rounded-2xl flex items-center space-x-3 shadow-xl"
-          >
-            <div className="w-10 h-10 rounded-full bg-secondary/20 flex items-center justify-center text-secondary shrink-0">
-              <TrendingUp size={18} />
-            </div>
-            <div>
-              <p className="text-[0.6rem] text-gray-400 font-medium uppercase tracking-wider">Brand Reach</p>
-              <p className="text-lg font-bold text-white">+230%</p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1.5 }}
-            style={{ willChange: "transform" }}
-            className="absolute bottom-20 -right-6 glass-card p-4 rounded-2xl flex items-center space-x-3 shadow-xl"
-          >
-            <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center text-purple-400 shrink-0">
-              <Users size={18} />
-            </div>
-            <div>
-              <p className="text-[0.6rem] text-gray-400 font-medium uppercase tracking-wider">Leads Generated</p>
-              <p className="text-lg font-bold text-white">5.2K+</p>
-            </div>
-          </motion.div>
         </motion.div>
       </div>
 
-      {/* Intro Strip */}
-      <div className="container mx-auto px-6 md:px-12 mt-16 relative z-20">
+      {/* Strategic 3-Pillar Strip */}
+      <div className="container mx-auto px-6 md:px-12 mt-16 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="border border-white/10 rounded-2xl p-8 bg-[#060606]/[0.025] grid grid-cols-1 md:grid-cols-4 gap-8"
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="border border-white/10 rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-white/[0.02] via-[#0d0d0d] to-white/[0.02] grid grid-cols-1 md:grid-cols-3 gap-6"
         >
-          <div className="md:col-span-1 md:border-r md:border-white/10 md:pr-8">
-            <p className="text-sm text-gray-400 leading-relaxed">
-              Within 90 days, using the power of social media, we take your brand to the next level. Need leads? We deliver leads. Need footfall? We bring people to your doorstep. Whatever your goal, we work within your budget.
-            </p>
-          </div>
-          {[
-            { stat: "90", label: "Days", sub: "To take your brand to the next level" },
-            { stat: "13+", label: "Services", sub: "Digital and offline marketing" },
-            { stat: "1", label: "Roof", sub: "One team, one plan, one point of contact" },
-          ].map(({ stat, label, sub }) => (
-            <div key={label} className="text-center">
-              <h3 className="text-4xl font-extrabold text-white mb-1" style={{ fontFamily: "Outfit, sans-serif" }}>
-                <span className="text-secondary">{stat}</span> {label}
-              </h3>
-              <p className="text-xs text-gray-500 uppercase tracking-wider">{sub}</p>
+          <div className="flex items-start space-x-4">
+            <span className="text-2xl font-black text-secondary font-mono">01</span>
+            <div>
+              <h2 className="text-base font-bold text-white mb-1" style={{ fontFamily: "Outfit, sans-serif" }}>
+                Diagnose In 30 Minutes
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
+                We pinpoint where you are now, what is working, and what is not.
+              </p>
             </div>
-          ))}
+          </div>
+
+          <div className="flex items-start space-x-4 md:border-x md:border-white/10 md:px-6">
+            <span className="text-2xl font-black text-secondary font-mono">02</span>
+            <div>
+              <h2 className="text-base font-bold text-white mb-1" style={{ fontFamily: "Outfit, sans-serif" }}>
+                Filter What Fits
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
+                No bloated service lists. We select only the channels that move your needle.
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-start space-x-4">
+            <span className="text-2xl font-black text-secondary font-mono">03</span>
+            <div>
+              <h2 className="text-base font-bold text-white mb-1" style={{ fontFamily: "Outfit, sans-serif" }}>
+                Define 90 Days of Action
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
+                Clear execution roadmap designed around your customers, message, and trust.
+              </p>
+            </div>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -16,11 +16,11 @@ const CampaignShowcase = () => (
           <span className="text-secondary">Everywhere.</span>
         </h2>
         <p className="text-gray-400 max-w-2xl mx-auto mb-14">
-          Visually connected campaigns ï¿½ digital and offline ï¿½ all planned by one team under one roof.
+          Visually connected campaigns — digital and offline — all planned by one team under one roof.
         </p>
       </motion.div>
 
-      {/* Static pills ï¿½ no infinite animations, fast render */}
+      {/* Static pills — no infinite animations, fast render */}
       <div className="flex flex-wrap justify-center gap-3">
         {channels.map((item, i) => (
           <motion.div

@@ -3,13 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 
 const faqs = [
-  { q: "What services does The Ad House offer?", a: "We offer 13 services under one roof: websites, mobile apps, social media marketing, branding, logo design, performance marketing, Meta Ads, Google Ads, email marketing, media production, theatre advertising, offline branding and immersive advertisements." },
+  { q: "What services does The Ad House offer?", a: "We offer 13 services grouped under Digital Presence, Brand, Social & Content, Performance, and Offline & Experiential." },
   { q: "What is the 90-Day Growth Plan?", a: "Our 90-Day Growth Plan is a structured, results-focused process: 15 days of discovery and strategy, then building and launching, then optimising and scaling, and finally accelerating with a full performance report and roadmap." },
-  { q: "Can you work with my budget?", a: "Yes. We design plans around your budget. Whether you are starting small or scaling fast, we will find the right mix of services that deliver the best results for what you have." },
-  { q: "Do you handle both digital and offline marketing?", a: "Absolutely. The Ad House is one of the few agencies that covers digital marketing and offline branding ï¿½ hoardings, vehicle branding, theatre ads and on-ground activations ï¿½ all from one team." },
-  { q: "How do I get started?", a: "Click Contact Us, fill in the form and our team will get back to you within 24 hours. Tell us your goal and your budget and we will do the rest." },
-  { q: "Will I get reports on my campaigns?", a: "Yes. You will receive clear, regular performance reports with actual numbers ï¿½ leads, footfall, sales ï¿½ not just vanity metrics. You will always have a single point of contact." },
-  { q: "Do you create content and videos?", a: "Yes. We have an in-house media production team that handles ad films, corporate videos, product shoots, reels and photography from concept to final edit." },
+  { q: "How does your pricing work?", a: "Pricing information coming soon. We design plans around your budget to find the right mix of services that deliver the best results." },
+  { q: "What is the minimum contract period?", a: "Contract period policies coming soon." },
+  { q: "Who owns the advertising accounts?", a: "Ad account ownership policies coming soon." },
+  { q: "Who owns the creative files?", a: "Creative files ownership policies coming soon." },
+  { q: "What are the payment terms?", a: "Payment terms coming soon." },
+  { q: "What does \"measurable results\" mean?", a: "Measurable results definitions coming soon." },
+  { q: "Do you handle both digital and offline marketing?", a: "Absolutely. The Ad House is one of the few agencies that covers digital marketing and offline branding — hoardings, vehicle branding, theatre ads and on-ground activations — all from one team." },
 ];
 
 const FAQ = () => {

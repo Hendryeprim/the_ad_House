@@ -5,7 +5,7 @@ import { Sparkles, Zap, Eye, Globe } from "lucide-react";
 const items = [
   { icon: Zap, title: "Performance-First Thinking", desc: "Every rupee is tracked. Every decision is backed by data. We optimise until your campaigns deliver measurable results." },
   { icon: Eye, title: "Creative That Converts", desc: "Scroll-stopping content, reels and ad creatives engineered with proven psychology to turn attention into enquiries." },
-  { icon: Globe, title: "Digital & Offline ï¿½ Together", desc: "We are the only team that plans your Instagram post and your hoarding in the same room, so your brand is consistent everywhere." },
+  { icon: Globe, title: "Digital & Offline — Together", desc: "We are the only team that plans your Instagram post and your hoarding in the same room, so your brand is consistent everywhere." },
   { icon: Sparkles, title: "One Point of Contact", desc: "No juggling agencies. No mixed messages. One team, one plan, one person you can call." },
 ];
 
@@ -23,7 +23,7 @@ const Innovation = () => (
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4" style={{ fontFamily: "Outfit, sans-serif" }}>
             What Makes Us <span className="text-secondary">Different.</span>
           </h2>
-          <p className="text-gray-400 text-lg">One roof. One plan. Real results. That is the The Ad House way.</p>
+          <p className="text-gray-400 text-lg">One roof. One plan. Real results. That is the Ad House way.</p>
         </motion.div>
       </div>
 

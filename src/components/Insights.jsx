@@ -64,7 +64,7 @@ const Insights = () => (
             </div>
             <div className="flex items-center text-xs font-bold uppercase tracking-wider mb-3">
               <span className="text-secondary">{a.category}</span>
-              <span className="mx-2 text-gray-400">ï¿½</span>
+              <span className="mx-2 text-gray-400">—</span>
               <span className="text-gray-500">{a.date}</span>
             </div>
             <h3 className="text-xl font-bold mb-4 group-hover:text-secondary transition-colors leading-tight text-white" style={{ fontFamily: "Outfit, sans-serif" }}>{a.title}</h3>
